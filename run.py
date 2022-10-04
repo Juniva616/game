@@ -41,9 +41,9 @@ def player_board(name, size, ships_num):
     Creates a player's board, populates it with ships.
     """
     print(f"{name}'s Board:")
-    board = [["." for x in range(size)] for y in range(size)]  
-    for row in board:
-        print(" ".join(row))
+    board = [["." for x in range(size)] for y in range(size)]  #The code from outer source
+    for row in board:                                          #The code from outer source
+        print(" ".join(row))                                   #The code from outer source
 
 player_board(name, size, ships_num) 
 
@@ -56,4 +56,4 @@ def computer_board(name, size, ships_num):
     for row in board:
         print(" ".join(row))
 
-computer_board(name, size, ships_num) 
+computer_board('Computer', size, ships_num) 
