@@ -1,6 +1,7 @@
 def game_intro():
     """
     Receives name and area from user's input. Calculates size and ships_number.
+    Validates input, raising ValueError.
     """
     name = input("Please, insert your name: \n")
     print()
@@ -11,7 +12,6 @@ def game_intro():
         try:
             print("There are 3 sizes of the game board: 4 x 4 = 16, 5 x 5 = 25 and 6 x 6 = 36")
             area = int(input("Please, choose one of the numbers 16, 25 or 36: \n"))
-            player = True
             if area == 16:
                 size = 4
                 ships_num = 6
@@ -26,13 +26,34 @@ def game_intro():
                 break
             else:
                 raise ValueError()
-        except ValueError as e:
+        except ValueError:
             print("Invalid data! Please try again.")          
 
-    return name, size, player, ships_num
+    return name, size, ships_num
 
-
-name, size, player, ships_num = game_intro()
+name, size, ships_num = game_intro()
 print()
 print(f"Dear {name}, you start the game on the {size}x{size} board with {ships_num} ships!")
 print()
+
+def player_board(name, size, ships_num):
+    """
+    Creates a player's board, populates it with ships.
+    """
+    print(f"{name}'s Board:")
+    board = [["." for x in range(size)] for y in range(size)]  
+    for row in board:
+        print(" ".join(row))
+
+player_board(name, size, ships_num) 
+
+def computer_board(name, size, ships_num):
+    """
+    Creates a player's board, populates it with ships.
+    """
+    print(f"{name}'s Board:")
+    board = [["." for x in range(size)] for y in range(size)]  
+    for row in board:
+        print(" ".join(row))
+
+computer_board(name, size, ships_num) 
