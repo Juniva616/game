@@ -1,3 +1,5 @@
+import random
+
 def game_intro():
     """
     Receives name and area from user's input. Calculates size and ships_number.
@@ -43,7 +45,7 @@ class Board:
     """
     def __init__(self, name, size, ship_num):
         self.name = name
-        self.size =  size
+        self.size = size
         self.ship_num = ship_num   
         self.board = [["." for x in range(size)] for y in range(size)]      
                             
@@ -56,7 +58,21 @@ user_board = Board(name, size, ships_num)
 computer_board = Board('Computer', size, ships_num) 
 comp_ships = Board('comp_ships', size, ships_num)
 
-
 user_board.show_board()
 computer_board.show_board()
 comp_ships.show_board()
+
+def random_dot(size):
+    dot = []
+    for i in range(0,2):
+        n = random.randint(0,size-1)
+        dot.append(n)
+    return dot
+ 
+dot = random_dot(size)    
+print(dot)
+
+
+
+
+
