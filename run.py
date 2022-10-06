@@ -31,29 +31,32 @@ def game_intro():
 
     return name, size, ships_num
 
+
 name, size, ships_num = game_intro()
 print()
 print(f"Dear {name}, you start the game on the {size}x{size} board with {ships_num} ships!")
 print()
 
-def player_board(name, size, ships_num):
+class Board:
     """
-    Creates a player's board, populates it with ships.
+    We 'll live - we'll see.
     """
-    print(f"{name}'s Board:")
-    board = [["." for x in range(size)] for y in range(size)]  #The code from outer source
-    for row in board:                                          #The code from outer source
-        print(" ".join(row))                                   #The code from outer source
+    def __init__(self, name, size, ship_num):
+        self.name = name
+        self.size =  size
+        self.ship_num = ship_num   
+        self.board = [["." for x in range(size)] for y in range(size)]      
+                            
+    def show_board(self):
+        print(f"{self.name}'s Board:")
+        for row in self.board:  
+            print(" ".join(row))  
 
-player_board(name, size, ships_num) 
+user_board = Board(name, size, ships_num) 
+computer_board = Board('Computer', size, ships_num) 
+comp_ships = Board('comp_ships', size, ships_num)
 
-def computer_board(name, size, ships_num):
-    """
-    Creates a player's board, populates it with ships.
-    """
-    print(f"{name}'s Board:")
-    board = [["." for x in range(size)] for y in range(size)]  
-    for row in board:
-        print(" ".join(row))
 
-computer_board('Computer', size, ships_num) 
+user_board.show_board()
+computer_board.show_board()
+comp_ships.show_board()
