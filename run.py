@@ -43,10 +43,10 @@ class Board:
     """
     We 'll live - we'll see.
     """
-    def __init__(self, name, size, ship_num):
+    def __init__(self, name, size, ships_num):
         self.name = name
         self.size = size
-        self.ship_num = ship_num   
+        self.ships_num = ships_num   
         self.board = [["." for x in range(size)] for y in range(size)]      
                             
     def show_board(self):
@@ -54,25 +54,30 @@ class Board:
         for row in self.board:  
             print(" ".join(row))  
 
+
+def random_dot(size):
+    n = random.randint(0,size-1)
+    return n
+
+def populate_board(ships_num):
+    while ships_num > 0:
+        x = random_dot(size)
+        y = random_dot(size)
+        if user_board.board[x][y] == '.': 
+            user_board.board[x][y] = '&'
+            ships_num = ships_num - 1
+        else:
+            print(ships_num)   
+
 user_board = Board(name, size, ships_num) 
 computer_board = Board('Computer', size, ships_num) 
 comp_ships = Board('comp_ships', size, ships_num)
 
 user_board.show_board()
-computer_board.show_board()
+#computer_board.show_board()
 comp_ships.show_board()
+print(user_board.board[1][1])
 
-def random_dot(size):
-    dot = []
-    for i in range(0,2):
-        n = random.randint(0,size-1)
-        dot.append(n)
-    return dot
- 
-dot = random_dot(size)    
-print(dot)
-
-
-
-
-
+n = random_dot(size)
+populate_board(ships_num)
+user_board.show_board() 
