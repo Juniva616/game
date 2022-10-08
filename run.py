@@ -129,9 +129,17 @@ def comp_shoot():
     who = False
     x = random_dot(size)
     y = random_dot(size)
-    #if user_ships.board[x][y] == 'o' or 'X':
-    #    comp_shoot()
-    #else:
+
+    list = []
+    dot = [(x, y)]
+    list.extend(dot)
+    print(f"list = {list}")
+    
+    for i in list:
+        if i == (x, y):
+            print(f"takoy shoot {(x, y)} uze est")
+            break
+
     print(f"Computer shot at {(x,y)}.")
     check_shoot(x, y, who, ships_of_user, ships_of_comp)
 
@@ -154,7 +162,8 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
             computer_board.board[x][y] = 'X'
             user_ships.show_board()
             #computer_board.show_board()
-            ships_of_comp -= 1
+            ships_of_comp = ships_of_comp - 1
+            print(f"ships_of_comp = {ships_of_comp}" )
             ship_check(ships_of_comp, x, y, who)
         elif comp_ships.board[x][y] == 'o':
             print("You have already shot at this point. Choose another one.")
@@ -179,7 +188,8 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
             user_ships.board[x][y] = 'X'
             #user_ships.show_board()
             #computer_board.show_board()
-            ships_of_user -= 1
+            ships_of_user = ships_of_user - 1
+            print(f"ships_of_user = {ships_of_user}")
             who = False
             ship_check(ships_of_user, x, y, who)
         elif user_ships.board[x][y] == 'o':
