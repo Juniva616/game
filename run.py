@@ -82,7 +82,7 @@ comp_ships = Board('comp_ships', size, ships_num)
 populate_board(user_ships, ships_num)
 populate_board(comp_ships, ships_num)
 user_ships.show_board()
-comp_ships.show_board()
+#comp_ships.show_board()
 computer_board.show_board()
 
 ships_of_user = ships_num
@@ -156,11 +156,16 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
             #computer_board.show_board()
             ships_of_comp -= 1
             ship_check(ships_of_comp, x, y, who)
-        elif comp_ships.board[x][y] == 'o' or 'X':
+        elif comp_ships.board[x][y] == 'o':
             print("You have already shot at this point. Choose another one.")
             user_ships.show_board()
             computer_board.show_board()
             user_shoot(who)
+        elif comp_ships.board[x][y] == 'X':  
+            print("You have already shot at this point. Choose another one.")
+            user_ships.show_board()
+            computer_board.show_board()
+            user_shoot(who)  
     else:
         if user_ships.board[x][y] == '.':
             print(f"Computer shot at {(x,y)} and missed.")          
@@ -177,9 +182,10 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
             ships_of_user -= 1
             who = False
             ship_check(ships_of_user, x, y, who)
-        elif user_ships.board[x][y] == 'o' or 'X':
+        elif user_ships.board[x][y] == 'o':
             comp_shoot()
-               
+        elif user_ships.board[x][y] == 'X':
+            comp_shoot()      
         
 who = True
 user_shoot(who)
