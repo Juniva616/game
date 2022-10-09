@@ -91,26 +91,37 @@ computer_board.show_board()
 ships_of_user = ships_num
 ships_of_comp = ships_num
 
-def ship_check(ships, x, y, who):
-    if ships > 0:
-        if who is True:
-            computer_board.board[x][y] = 'X'
-            comp_ships.board[x][y] = 'X'
-            computer_board.show_board()
-            user_shoot(who)
+def ship_check(who):
+    if who is True:
+        print("-" * 35)
+        lists = comp_ships.board
+        ship = '&'
+        alive_ships = 0
+        for list in lists:
+            if ship in list:
+                alive_ships += 1 
+
+        if alive_ships == 0:
+            print(f"Dear {name}, you have won! Congratulations!")
         else:
-            user_ships.board[x][y] = 'X'
-            user_ships.show_board()
-            computer_board.show_board()
-            comp_shoot()
+            user_shoot(who)    
+   
     else:
-        if ships == 0:
-            if who is True:
-                print("-" * 35)
-                print(f"Dear {name}, you have won! Congratulations!")      
-            else:
-                print("Sorry, you are lost. Computer has won this time!") 
-         
+        lists = user_ships.board
+        ship = '&'
+        alive_ships = 0
+        for list in lists:
+            if ship in list:
+                alive_ships += 1 
+
+        if alive_ships == 0:
+            print(f"Sorry, {name}, you have lost! Computer has won this time!")
+            print("*" * 35) * 2
+            print("GAME IS OVER! Would you like to start the game?")
+            input("Insert Y  or  N:  \n")
+        else:
+            comp_shoot()         
+
 
 def user_shoot(who):
     while who:
@@ -149,7 +160,6 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
             print("You have missed.")
             comp_ships.board[x][y] = 'o'
             computer_board.board[x][y] = 'o'
-            #print(comp_ships.board)
             user_ships.show_board()
             computer_board.show_board()
             who = False
@@ -158,11 +168,9 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
             print("You hit Computer's ship! Shoot again.")
             comp_ships.board[x][y] = 'X'
             computer_board.board[x][y] = 'X'
-            user_ships.show_board()
-            #computer_board.show_board()
-            ships_of_comp = ships_of_comp - 1
-            print(f"ships_of_comp = {ships_of_comp}")
-            ship_check(ships_of_comp, x, y, who)
+            user_ships.show_board()  
+            computer_board.show_board()          
+            ship_check(who)
         elif comp_ships.board[x][y] == 'o':
             print("You have already shot at this point. Choose another one.")
             user_ships.show_board()
@@ -184,12 +192,10 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
         elif user_ships.board[x][y] == '&':
             print("Computer hit your ship! It shoots again.")   
             user_ships.board[x][y] = 'X'
-            #user_ships.show_board()
-            #computer_board.show_board()
-            ships_of_user = ships_of_user - 1
-            print(f"ships_of_user = {ships_of_user}")
             who = False
-            ship_check(ships_of_user, x, y, who)
+            user_ships.show_board()
+            computer_board.show_board()
+            ship_check(who)
         elif user_ships.board[x][y] == 'o':
             comp_shoot()
         elif user_ships.board[x][y] == 'X':
