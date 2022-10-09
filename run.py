@@ -1,19 +1,23 @@
 import random
 
-def game_intro():                     
+
+def game_intro():                   
     """
     Receives name and area from user's input. Calculates size and ships_number.
     Validates input, raising ValueError.
     """
+    print('*' * 35)
+    print("WELCOME TO THE SEA BATTLE GAME!")
+    print("There are 3 sizes of the game board: \n4 x 4 = 16, 5 x 5 = 25 and 6 x 6 = 36")
+    print("To stop the game press CTRL+C, otherwise we continue.")
+    print('*' * 35)
     name = input("Please, insert your name: \n")
     print()
-    print(f"Hello, {name}! To stop the game press CTRL+C, otherwise we continue.")  
+    print(f"Hello, {name}!")
     print()
-
     while True:
-        try:
-            print("There are 3 sizes of the game board: 4 x 4 = 16, 5 x 5 = 25 and 6 x 6 = 36")
-            area = int(input("Please, choose one of the numbers 16, 25 or 36: \n"))
+        try:   
+            area = int(input("Please, choose the board size - 16, 25 or 36: \n"))
             if area == 16:
                 size = 4
                 ships_num = 6
@@ -29,51 +33,50 @@ def game_intro():
             else:
                 raise ValueError()
         except ValueError:
-            print("Invalid data! Please try again.")          
+            print("Invalid data! Please try again.")        
 
     return name, size, ships_num
 
 
 name, size, ships_num = game_intro()
-print()
+
 print("-" * 35)
 print(f"Dear {name}, you start the game on the {size}x{size} board with {ships_num} ships!")
 print()
 
-class Board:
+class Board():
     """
     Creates game boards.
     """
     def __init__(self, name, size, ships_num):
         self.name = name
         self.size = size
-        self.ships_num = ships_num   
-        self.board = [["." for x in range(size)] for y in range(size)]      
-                            
+        self.ships_num = ships_num 
+        self.board = [["." for x in range(size)] for y in range(size)]     
+                           
     def show_board(self):
         print(f"{self.name}'s Board:")
-        for row in self.board:  
-            print(" ".join(row))  
+        for row in self.board:
+            print(" ".join(row)) 
 
 
 def random_dot(size):
-    n = random.randint(0,size-1)
-    return n
-
+    return random.randint(0, size-1)
+     
 
 def populate_board(player, ships_num):
     while ships_num > 0:
         x = random_dot(size)
         y = random_dot(size)
-        if player.board[x][y] == '.': 
+        if player.board[x][y] == '.':
             player.board[x][y] = '&'
             ships_num -= 1
         else:
-            pass             
+            pass         
 
 
-user_ships = Board(name, size, ships_num) 
-computer_board = Board('Computer', size, ships_num) 
+user_ships = Board(name, size, ships_num)
+computer_board = Board('Computer', size, ships_num)
 comp_ships = Board('comp_ships', size, ships_num)
 
 #user_board.show_board()
@@ -90,8 +93,8 @@ ships_of_comp = ships_num
 
 def ship_check(ships, x, y, who):
     if ships > 0:
-        if who == True:
-            computer_board.board[x][y] = 'X' 
+        if who is True:
+            computer_board.board[x][y] = 'X'
             comp_ships.board[x][y] = 'X'
             computer_board.show_board()
             user_shoot(who)
@@ -102,15 +105,15 @@ def ship_check(ships, x, y, who):
             comp_shoot()
     else:
         if ships == 0:
-            if who == True:
+            if who is True:
                 print("-" * 35)
-                print(f"Dear {name}, you have won! Congratulations!")       
+                print(f"Dear {name}, you have won! Congratulations!")      
             else:
-                print(f"Sorry, you are lost. Computer has won this time!")  
-            
+                print("Sorry, you are lost. Computer has won this time!") 
+         
 
 def user_shoot(who):
-    while (who):
+    while who:
         try:
             x = int(input(f"Insert the row (from 0 to {size - 1}): \n"))
             y = int(input(f"Insert the colunm (from 0 to {size - 1}): \n"))
@@ -122,8 +125,8 @@ def user_shoot(who):
             else:
                 raise ValueError()
         except ValueError:
-            print(f"Invalid data! Please choose a number from 0 to {size - 1}.")  
-            
+            print(f"Invalid data! Please choose a number from 0 to {size - 1}.")
+
 
 def comp_shoot():
     who = False
@@ -141,7 +144,7 @@ def comp_shoot():
 
 def check_shoot(x, y, who, ships_of_user, ships_of_comp):
     print("-" * 35)
-    if (who == True):
+    if who is True:
         if comp_ships.board[x][y] == '.':
             print("You have missed.")
             comp_ships.board[x][y] = 'o'
@@ -158,7 +161,7 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
             user_ships.show_board()
             #computer_board.show_board()
             ships_of_comp = ships_of_comp - 1
-            print(f"ships_of_comp = {ships_of_comp}" )
+            print(f"ships_of_comp = {ships_of_comp}")
             ship_check(ships_of_comp, x, y, who)
         elif comp_ships.board[x][y] == 'o':
             print("You have already shot at this point. Choose another one.")
@@ -191,8 +194,7 @@ def check_shoot(x, y, who, ships_of_user, ships_of_comp):
             comp_shoot()
         elif user_ships.board[x][y] == 'X':
             comp_shoot()      
-        
+
+
 who = True
 user_shoot(who)
-    
-
