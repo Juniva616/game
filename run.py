@@ -129,19 +129,14 @@ def comp_shoot():
     who = False
     x = random_dot(size)
     y = random_dot(size)
-
-    list = []
-    dot = [(x, y)]
-    list.extend(dot)
-    print(f"list = {list}")
-    
-    for i in list:
-        if i == (x, y):
-            print(f"takoy shoot {(x, y)} uze est")
-            break
-
-    print(f"Computer shot at {(x,y)}.")
-    check_shoot(x, y, who, ships_of_user, ships_of_comp)
+    if user_ships.board[x][y] == '.':
+        print(f"Computer is shooting at {(x,y)}.")
+        check_shoot(x, y, who, ships_of_user, ships_of_comp)
+    elif user_ships.board[x][y] == '&':
+        print(f"Computer is shooting at {(x,y)}.")
+        check_shoot(x, y, who, ships_of_user, ships_of_comp)
+    else:
+        comp_shoot()
 
 
 def check_shoot(x, y, who, ships_of_user, ships_of_comp):
