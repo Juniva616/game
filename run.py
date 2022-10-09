@@ -8,13 +8,14 @@ def game_intro():
     """
     print('*' * 55)
     print("*  WELCOME TO THE SEA BATTLE GAME!")
-    print("*  There are 3 sizes of the game board: \n*  4 x 4 = 16, 5 x 5 = 25 and 6 x 6 = 36")
+    print("*  There are 3 sizes of the game board:")
+    print("*  4 x 4 = 16, 5 x 5 = 25 and 6 x 6 = 36")
     print("*  To stop the game press CTRL+C, otherwise we continue.")
     print("*  Top left corner is    row: 0    column: 0")
     print('*' * 55)
 # Check the name's length
     naming = False
-    while naming == False:
+    while naming != True:
         name = input("Please, insert your name: \n")
         print()
         if len(name) < 15:
@@ -22,7 +23,7 @@ def game_intro():
         else:    
             print("The name is too long! Please, shorten it!")
             print()
-    print(f"Hello, {name}!") # The end of check.
+    print(f"Hello, {name}!")      # The end of check.
     print()
     while True:
         try:   
@@ -31,11 +32,11 @@ def game_intro():
                 size = 4
                 ships_num = 6
                 break
-            elif area == 25:
+            if area == 25:
                 size = 5
                 ships_num = 10
                 break
-            elif area == 36:
+            if area == 36:
                 size = 6
                 ships_num = 13
                 break
@@ -52,6 +53,7 @@ name, size, ships_num = game_intro()
 print("-" * 35)
 print(f"Dear {name}, you start the game on the {size}x{size} board with {ships_num} ships!")
 print()
+
 
 class Board():
     """
@@ -92,56 +94,51 @@ populate_board(comp_ships, ships_num)
 user_ships.show_board()
 computer_board.show_board()
 
-ships_of_user = ships_num
-ships_of_comp = ships_num
+#####
 
 def ship_check(who):
-    if who is True:
-        print("-" * 35)
+    print("-" * 35)
+    if who is True: 
         lists = comp_ships.board
-        ship = '&'
-        alive_ships = 0
+        print(f"listComp = {lists}")
+        ships = 0
         for list in lists:
-            if ship in list:
-                alive_ships += 1 
-
-        if alive_ships == 0:
+            alive_ships = list.count('&')
+            ships += alive_ships
+        print(ships)
+ 
+        if ships == 0:
             print(f"Dear {name}, you have won! Congratulations!")
-            print("*" * 35)
-            print("*" * 35)
-            print("GAME IS OVER! Would you like to start the game?")
-            end_game = input("Insert Y or N: \n")
-            if end_game == 'Y' or end_game == 'y':
-                game_intro()
-            elif end_game == 'N' or end_game == 'n':   
-                print(f"Thank you for playing our game, dear {name}! \n Good bye!")
-                print("-->" * 12)
-                
+            game_over()
         else:
             user_shoot(who)    
-   
     else:
         lists = user_ships.board
-        ship = '&'
-        alive_ships = 0
+        print(f"listUser = {lists}")
+        ships = 0
         for list in lists:
-            if ship in list:
-                alive_ships += 1 
+            alive_ships = list.count('&')
+            ships += alive_ships
+        print(ships)
 
-        if alive_ships == 0:
+        if ships == 0:
             print(f"Sorry, {name}, you have lost! Computer has won this time!")
-            print("*" * 35)
-            print("*" * 35)
-            print("GAME IS OVER! Would you like to start the game?")
-            end_game = input("Insert Y or N: \n")
-            if end_game == 'Y' or end_game == 'y':
-                game_intro()
-            else:
-                print(f"Thank you for playing our game, dear {name}! \n Good bye!") 
-                print("-->" * 12)
-                 
+            game_over()                 
         else:
-            comp_shoot()         
+            comp_shoot()    
+
+ 
+def game_over():             
+    print("*" * 35)
+    print("*" * 35)
+    print("GAME IS OVER! Would you like to start the game?")
+    end_game = input("Insert Y or N: \n")
+    #if end_game == 'Y' or end_game == 'y': 
+    if end_game in ('Y', 'y'):
+        game_intro()
+    else:
+        print(f"Thank you for playing our game, dear {name}! \n Good bye!")
+        print("-->" * 12)
 
 
 def user_shoot(who):
@@ -152,7 +149,7 @@ def user_shoot(who):
             print(f"You have chosen {(x, y)}.")
             if (0 <= x < size) & (0 <= y < size):
                 who = True
-                check_shoot(x, y, who, ships_of_user, ships_of_comp)
+                check_shoot(x, y, who)
                 break
             else:
                 raise ValueError()
@@ -166,15 +163,15 @@ def comp_shoot():
     y = random_dot(size)
     if user_ships.board[x][y] == '.':
         print(f"Computer is shooting at {(x,y)}.")
-        check_shoot(x, y, who, ships_of_user, ships_of_comp)
+        check_shoot(x, y, who)
     elif user_ships.board[x][y] == '&':
         print(f"Computer is shooting at {(x,y)}.")
-        check_shoot(x, y, who, ships_of_user, ships_of_comp)
+        check_shoot(x, y, who)
     else:
         comp_shoot()
 
 
-def check_shoot(x, y, who, ships_of_user, ships_of_comp):
+def check_shoot(x, y, who):
     print("-" * 35)
     if who is True:
         if comp_ships.board[x][y] == '.':
