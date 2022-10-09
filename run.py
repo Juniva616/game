@@ -10,6 +10,7 @@ def game_intro():
     print("WELCOME TO THE SEA BATTLE GAME!")
     print("There are 3 sizes of the game board: \n4 x 4 = 16, 5 x 5 = 25 and 6 x 6 = 36")
     print("To stop the game press CTRL+C, otherwise we continue.")
+    print("Top left corner is row: 0 col: 0")
     print('*' * 35)
     name = input("Please, insert your name: \n")
     print()
@@ -103,6 +104,14 @@ def ship_check(who):
 
         if alive_ships == 0:
             print(f"Dear {name}, you have won! Congratulations!")
+            print("*" * 35)
+            print("*" * 35)
+            print("GAME IS OVER! Would you like to start the game?")
+            end_game = input("Insert Y or N: \n")
+            if end_game == 'Y' or end_game == 'y':
+                game_intro()
+            else:
+                print(f"Thank you for playing our game, dear {name}! \n Good bye!")
         else:
             user_shoot(who)    
    
@@ -116,9 +125,14 @@ def ship_check(who):
 
         if alive_ships == 0:
             print(f"Sorry, {name}, you have lost! Computer has won this time!")
-            print("*" * 35) * 2
+            print("*" * 35)
+            print("*" * 35)
             print("GAME IS OVER! Would you like to start the game?")
-            input("Insert Y  or  N:  \n")
+            end_game = input("Insert Y or N: \n")
+            if end_game == 'Y' or end_game == 'y':
+                game_intro()
+            else:
+                print(f"Thank you for playing our game, dear {name}! \n Good bye!")    
         else:
             comp_shoot()         
 
