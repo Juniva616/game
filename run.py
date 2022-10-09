@@ -6,15 +6,23 @@ def game_intro():
     Receives name and area from user's input. Calculates size and ships_number.
     Validates input, raising ValueError.
     """
-    print('*' * 35)
-    print("WELCOME TO THE SEA BATTLE GAME!")
-    print("There are 3 sizes of the game board: \n4 x 4 = 16, 5 x 5 = 25 and 6 x 6 = 36")
-    print("To stop the game press CTRL+C, otherwise we continue.")
-    print("Top left corner is row: 0 col: 0")
-    print('*' * 35)
-    name = input("Please, insert your name: \n")
-    print()
-    print(f"Hello, {name}!")
+    print('*' * 55)
+    print("*  WELCOME TO THE SEA BATTLE GAME!")
+    print("*  There are 3 sizes of the game board: \n*  4 x 4 = 16, 5 x 5 = 25 and 6 x 6 = 36")
+    print("*  To stop the game press CTRL+C, otherwise we continue.")
+    print("*  Top left corner is    row: 0    column: 0")
+    print('*' * 55)
+# Check the name's length
+    naming = False
+    while naming == False:
+        name = input("Please, insert your name: \n")
+        print()
+        if len(name) < 15:
+            naming = True       
+        else:    
+            print("The name is too long! Please, shorten it!")
+            print()
+    print(f"Hello, {name}!") # The end of check.
     print()
     while True:
         try:   
@@ -79,14 +87,9 @@ def populate_board(player, ships_num):
 user_ships = Board(name, size, ships_num)
 computer_board = Board('Computer', size, ships_num)
 comp_ships = Board('comp_ships', size, ships_num)
-
-#user_board.show_board()
-#comp_ships.show_board()
-
 populate_board(user_ships, ships_num)
 populate_board(comp_ships, ships_num)
 user_ships.show_board()
-#comp_ships.show_board()
 computer_board.show_board()
 
 ships_of_user = ships_num
@@ -110,8 +113,10 @@ def ship_check(who):
             end_game = input("Insert Y or N: \n")
             if end_game == 'Y' or end_game == 'y':
                 game_intro()
-            else:
+            elif end_game == 'N' or end_game == 'n':   
                 print(f"Thank you for playing our game, dear {name}! \n Good bye!")
+                print("-->" * 12)
+                
         else:
             user_shoot(who)    
    
@@ -132,7 +137,9 @@ def ship_check(who):
             if end_game == 'Y' or end_game == 'y':
                 game_intro()
             else:
-                print(f"Thank you for playing our game, dear {name}! \n Good bye!")    
+                print(f"Thank you for playing our game, dear {name}! \n Good bye!") 
+                print("-->" * 12)
+                 
         else:
             comp_shoot()         
 
