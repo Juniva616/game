@@ -110,55 +110,6 @@ user_ships.show_board()
 computer_board.show_board()
 
 
-def ship_check(who):
-    """
-    Checks if all the ships are shot. If so, ends the game.
-    """
-    print("-" * 35)
-    if who is True:
-        fleet = comp_ships.board
-        ships = 0
-        for ship in fleet:
-            alive_ships = ship.count('&')
-            ships += alive_ships
-
-        if ships == 0:
-            print(f"Well done, {name}, you have won! \
-                Congratulations!")
-            game_over()
-        else:
-            user_shoot(who)
-    else:
-        fleet = user_ships.board
-        ships = 0
-        for ship in fleet:
-            alive_ships = ship.count('&')
-            ships += alive_ships
-
-        if ships == 0:
-            print(f"Sorry, {name}, you have lost! \
-                    Computer has won this time!")
-            game_over()
-        else:
-            comp_shoot()
-
-
-def game_over():
-    """
-    Finishes the game and starts a new one if user wants.
-    """
-    print("*" * 35)
-    print("*" * 35)
-    print("GAME IS OVER! Would you like to start the game?")
-    end_game = input("Insert Y or N: \n")
-    if end_game in ('Y', 'y'):
-        game_intro()
-    else:
-        print(f"Thank you for playing our game, dear {name}!")
-        print("Good bye! Come again!")
-        print("-->" * 12)
-
-
 def user_shoot(who):
     """
     Gets user's input as (x,y) coordinates.
@@ -178,7 +129,7 @@ def user_shoot(who):
                 raise ValueError()
         except ValueError:
             print(f"Invalid data! Please choose \
-                   a number from 0 to {size - 1}.")
+a number from 0 to {size - 1}.")
 
 
 def comp_shoot():
@@ -223,13 +174,13 @@ def check_shoot(x, y, who):
             ship_check(who)
         elif comp_ships.board[x][y] == 'o':
             print("You have already shot at this point. \
-                   Choose another one.")
+Choose another one.")
             user_ships.show_board()
             computer_board.show_board()
             user_shoot(who)
         elif comp_ships.board[x][y] == 'X':
-            print("You have already shot at this point.\
-                 Choose another one.")
+            print("You have already shot at this point. \
+Choose another one.")
             user_ships.show_board()
             computer_board.show_board()
             user_shoot(who)
@@ -252,6 +203,55 @@ def check_shoot(x, y, who):
             comp_shoot()
         elif user_ships.board[x][y] == 'X':
             comp_shoot()
+
+
+def ship_check(who):
+    """
+    Checks if all the ships are shot. If so, ends the game.
+    """
+    print("-" * 35)
+    if who is True:
+        fleet = comp_ships.board
+        ships = 0
+        for ship in fleet:
+            alive_ships = ship.count('&')
+            ships += alive_ships
+
+        if ships == 0:
+            print(f"Well done, {name}, you have won! \
+Congratulations!")
+            game_over()
+        else:
+            user_shoot(who)
+    else:
+        fleet = user_ships.board
+        ships = 0
+        for ship in fleet:
+            alive_ships = ship.count('&')
+            ships += alive_ships
+
+        if ships == 0:
+            print(f"Sorry, {name}, you have lost! \
+Computer has won this time!")
+            game_over()
+        else:
+            comp_shoot()
+
+
+def game_over():
+    """
+    Finishes the game and starts a new one if user wants.
+    """
+    print("*" * 35)
+    print("*" * 35)
+    print("GAME IS OVER! Would you like to start the game?")
+    end_game = input("Insert Y or N: \n")
+    if end_game in ('Y', 'y'):
+        game_intro()
+    else:
+        print(f"Thank you for playing our game, dear {name}!")
+        print("Good bye! Come again!")
+        print("-->" * 12)
 
 
 who = True
