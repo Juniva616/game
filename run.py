@@ -1,3 +1,4 @@
+""" This module imports in-built module to generate random numbers."""
 import random
 
 
@@ -240,18 +241,13 @@ Computer has won this time!")
 
 def game_over():
     """
-    Finishes the game and starts a new one if user wants.
+    Finishes the game and prints farewell message.
     """
     print("*" * 35)
-    print("*" * 35)
-    print("GAME IS OVER! Would you like to start the game?")
-    end_game = input("Insert Y or N: \n")
-    if end_game in ('Y', 'y'):
-        game_intro()
-    else:
-        print(f"Thank you for playing our game, dear {name}!")
-        print("Good bye! Come again!")
-        print("-->" * 12)
+    print("GAME IS OVER!")
+
+    print(f"Thank you for playing our game, dear {name}!")
+    print("-->" * 12)
 
 
 who = True
