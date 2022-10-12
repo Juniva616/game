@@ -229,7 +229,11 @@ def game_over():
     """
     print()
     print("*" * 50)
+<<<<<<< HEAD
     print("*               GAME IS OVER!                    *")
+=======
+    print("*            GAME IS OVER!                       *")
+>>>>>>> 27f5bd847a7964b919cfc5b4edad7880b86a0489
     print("*       Thank you for playing our game!          *")
     print("*                                                *")
     print("*" * 50)
