@@ -216,7 +216,6 @@ Congratulations!")
             alive_ships = ship.count('&')
             ships += alive_ships
         print(f"You have {ships} ships now. ")
-      
         if ships == 0:
             print(f"Sorry, {name}, you have lost! \
 Computer has won this time!")
