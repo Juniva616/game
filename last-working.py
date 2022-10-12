@@ -55,6 +55,13 @@ def game_intro():
     return _name, _size, _ships_num
 
 
+name, size, ships_num = game_intro()
+print("-" * 35)
+print(f"Dear {name}, you start the game on the {size}x{size} \
+board with {ships_num} ships!")
+print()
+
+
 class Board():
     """
     Creates game boards.
@@ -93,6 +100,15 @@ def populate_board(player, ships_num):
             ships_num -= 1
         else:
             pass
+
+
+user_ships = Board(name, size, ships_num)
+computer_board = Board('Computer', size, ships_num)
+comp_ships = Board('comp_ships', size, ships_num)
+populate_board(user_ships, ships_num)
+populate_board(comp_ships, ships_num)
+user_ships.show_board()
+computer_board.show_board()
 
 
 def user_shoot(who):
@@ -227,34 +243,12 @@ def game_over():
     """
     Finishes the game and prints farewell message.
     """
-    print()
-    print("*" * 50)
-    print("*               GAME IS OVER!                    *")
-    print("*       Thank you for playing our game!          *")
-    print("*                                                *")
-    print("*" * 50)
-    print("                    |>>")
-    print("                    |")
-    print("              _____/|\_____")
-    print("              \--<>---<>--/")
-    print("      ~ ~ ~ ~ ~\~~~~~~~~~/~ ~ ~ ~ ~ ~")
-    print("     ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  ")
-    print()
+    print("*" * 35)
+    print("GAME IS OVER!")
 
+    print(f"Thank you for playing our game, dear {name}!")
+    print("-->" * 12)
 
-name, size, ships_num = game_intro()
-print("-" * 50)
-print(f"Dear {name}, you start the game on the {size}x{size} \
-board with {ships_num} ships!")
-print()
-
-user_ships = Board(name, size, ships_num)
-computer_board = Board('Computer', size, ships_num)
-comp_ships = Board('comp_ships', size, ships_num)
-populate_board(user_ships, ships_num)
-populate_board(comp_ships, ships_num)
-user_ships.show_board()
-computer_board.show_board()
 
 who = True
 user_shoot(who)
