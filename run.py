@@ -105,7 +105,7 @@ def user_shoot(who):
         try:
             x = int(input(f"Insert the row (from 0 to {size - 1}): \n"))
             y = int(input(f"Insert the colunm (from 0 to {size - 1}): \n"))
-            print(f"You have chosen {(x, y)}.")
+            print(f"You are shooting at {(x, y)}.")
             if (0 <= x < size) & (0 <= y < size):
                 who = True
                 check_shoot(x, y, who)
@@ -201,6 +201,7 @@ def ship_check(who):
         for ship in fleet:
             alive_ships = ship.count('&')
             ships += alive_ships
+        print(f"Computer has {ships} ships now. ")
 
         if ships == 0:
             print(f"Well done, {name}, you have won! \
@@ -214,7 +215,8 @@ Congratulations!")
         for ship in fleet:
             alive_ships = ship.count('&')
             ships += alive_ships
-
+        print(f"You have {ships} ships now. ")
+      
         if ships == 0:
             print(f"Sorry, {name}, you have lost! \
 Computer has won this time!")
@@ -229,11 +231,7 @@ def game_over():
     """
     print()
     print("*" * 50)
-<<<<<<< HEAD
     print("*               GAME IS OVER!                    *")
-=======
-    print("*            GAME IS OVER!                       *")
->>>>>>> 27f5bd847a7964b919cfc5b4edad7880b86a0489
     print("*       Thank you for playing our game!          *")
     print("*                                                *")
     print("*" * 50)
