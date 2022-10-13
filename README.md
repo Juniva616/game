@@ -6,7 +6,6 @@ The Sea Battle game is played on two ruled grids on which each player's fleet of
 
 The application provides a working the Sea Battle game for a single user to play against the computer.
 
- ![The game on different screen sizes](./readme-files/md-screens.png)
  ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-screens.png) 
 
 ## How to play
@@ -35,37 +34,31 @@ The winner is the player who sinks all of their opponent's ships first.
     - The player is greeted by name
     - The player can choose the grid size
    
-
- ![The game on different screen sizes](./readme-files/md-maria16.png)
- ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-maria16.png)    
+ ![The input of the name and grid size ](https://juniva616.github.io/game/readme-files/md-maria16.png)    
 
 - Random board generation
     - Ships are randomly placed on both the player and the computer boards
     - The player cannot see where the computer's ships are.
 
- ![The game on different screen sizes](./readme-files/md-shot.png)
- ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-shot.png)  
+ ![The game boards screen. ](https://juniva616.github.io/game/readme-files/md-shot.png)  
 
 - Input validation and error-checking
-    - You cannot enter a name longer than 15 characters
+    - You cannot enter a name longer than 15 characters   
 
-![The game on different screen sizes](./readme-files/md-longname.png)
- ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-longname.png) 
+        ![The name length validation](https://juniva616.github.io/game/readme-files/md-longname.png) 
 
-    - You cannot enter coordinates outside the size of the game board
-![The game on different screen sizes](./readme-files/md-coord.png)
- ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-coord.png)  
+    - You cannot enter coordinates outside the size of the game board 
+     
+         ![The coordinates input validation](https://juniva616.github.io/game/readme-files/md-coord.png)  
 
      - You must enter valid numbers for coordinates and the game board
 
- ![The game on different screen sizes](./readme-files/md-invaliddata.png)
- ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-invaliddata.png)  
+        ![The board size input validation](https://juniva616.github.io/game/readme-files/md-invaliddata.png)  
 
 
     - You cannot enter the same coordinates for a shot twice  
 
- ![The game on different screen sizes](./readme-files/md-already.png)
- ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-already.png)    
+        ![The coordinates input validation](https://juniva616.github.io/game/readme-files/md-already.png)     
 
 - Immediate Feedback 
     - Shows the player's input of the shot coordinates 
@@ -77,16 +70,16 @@ The winner is the player who sinks all of their opponent's ships first.
 - Data maintained in  class instances
 - Congratulations at the end of the game
 
- ![The game on different screen sizes](./readme-files/md-gameover.png)
- ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-gameover.png)  
+ ![The end of game screen. ](https://juniva616.github.io/game/readme-files/md-gameover.png)  
+
 
 ## Data Model
 
 My program uses OOP principles, in particular, the program creates two instances of the Board class to contain the player's board and the computer's board.
 
-The Board class stores the board size,  the number of ships, the position of the ships, the killed and missed shots and a show_board method to display the players' boards.
+The Board class stores the board size,  the number of ships, the position of the ships, the killed and missed shots, a populate_board method to populate boards with ships and a show_board method to display the players' boards.
 
-The logic of the game is implemented by many functions that call each other in the due order.
+The logic of the game is implemented by a few functions that call each other in the due order.
 
 ## Testing
 
@@ -98,7 +91,9 @@ The logic of the game is implemented by many functions that call each other in t
 ## Validation
 ### Python code validation
 
-The code has passed through validation in VSCode in-built linter flake8 without any errors or warnings.
+The code has passed through validation in VSCode in-built linter flake8 without any errors.
+
+There are a few warnings caused by the using ASCII characters for drawing the ship. The ship image is an important feature that improves User Experience. 
  
 
 ## Technologies Used
@@ -128,6 +123,7 @@ https://translate.google.com/
 
  
 ## Unfixed bugs
+
 No unfixed bugs.
 
 ## Deployment
@@ -140,8 +136,7 @@ Steps for deployment:
     - Create a new Heroku App
     - Set the buidbacks to Python and NodeJS in that order
     - Link the Heroku App to the repository
-    - Click on **Deploy
- 
+    - Click on Deploy
 
 The URL on GitHub with my project is https://github.com/Juniva616/game
 
