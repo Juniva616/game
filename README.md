@@ -34,31 +34,31 @@ The winner is the player who sinks all of their opponent's ships first.
     - The player is greeted by name
     - The player can choose the grid size
    
- ![The input of the name and grid size ](https://juniva616.github.io/game/readme-files/md-maria16.png)    
+    ![The input of the name and grid size ](https://github.com/Juniva616/game/blob/main/readme-files/md-maria16.png)    
 
 - Random board generation
     - Ships are randomly placed on both the player and the computer boards
     - The player cannot see where the computer's ships are.
 
- ![The game boards screen. ](https://juniva616.github.io/game/readme-files/md-shot.png)  
+    ![The game boards screen. ](https://github.com/Juniva616/game/blob/main/readme-files/md-shot.png)  
 
 - Input validation and error-checking
     - You cannot enter a name longer than 15 characters   
 
-        ![The name length validation](https://juniva616.github.io/game/readme-files/md-longname.png) 
+        ![The name length validation](https://github.com/Juniva616/game/blob/main/readme-files/md-longname.png) 
 
     - You cannot enter coordinates outside the size of the game board 
      
-         ![The coordinates input validation](https://juniva616.github.io/game/readme-files/md-coord.png)  
+         ![The coordinates input validation](https://github.com/Juniva616/game/blob/main/readme-files/md-coord.png)  
 
      - You must enter valid numbers for coordinates and the game board
 
-        ![The board size input validation](https://juniva616.github.io/game/readme-files/md-invaliddata.png)  
+         ![The board size input validation](https://github.com/Juniva616/game/blob/main/readme-files/md-invaliddata.png)  
 
 
     - You cannot enter the same coordinates for a shot twice  
 
-        ![The coordinates input validation](https://juniva616.github.io/game/readme-files/md-already.png)     
+          ![The coordinates input validation](https://github.com/Juniva616/game/blob/main/readme-files/md-already.png)     
 
 - Immediate Feedback 
     - Shows the player's input of the shot coordinates 
@@ -70,8 +70,8 @@ The winner is the player who sinks all of their opponent's ships first.
 - Data maintained in  class instances
 - Congratulations at the end of the game
 
- ![The end of game screen. ](https://juniva616.github.io/game/readme-files/md-gameover.png)  
-
+ ![The end of game screen. ](https://github.com/Juniva616/game/blob/main/readme-files/md-gameover.png)  
+ 
 
 ## Data Model
 
