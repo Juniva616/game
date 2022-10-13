@@ -22,7 +22,7 @@ def game_intro():
     print('*' * 55)
     naming = False
     while not naming:
-        _name = input("Please, insert your name: \n")
+        _name = input("Please, enter your name: \n")
         print()
         if len(_name) < 15:
             naming = True
@@ -74,23 +74,23 @@ class Board():
             print(" ".join(row))
 
 
-def random_dot(size):
+def random_dot(sizes):
     """
     Gets random integers within board sizes.
     """
-    return random.randint(0, size-1)
+    return random.randint(0, sizes-1)
 
 
-def populate_board(player, ships_num):
+def populate_board(player, ships_nums):
     """
     Populates game boards with ships randomly.
     """
-    while ships_num > 0:
+    while ships_nums > 0:
         x = random_dot(size)
         y = random_dot(size)
         if player.board[x][y] == '.':
             player.board[x][y] = '&'
-            ships_num -= 1
+            ships_nums -= 1
         else:
             pass
 
@@ -103,8 +103,8 @@ def user_shoot(who):
     """
     while who:
         try:
-            x = int(input(f"Insert the row (from 0 to {size - 1}): \n"))
-            y = int(input(f"Insert the colunm (from 0 to {size - 1}): \n"))
+            x = int(input(f"Enter the row (from 0 to {size - 1}): \n"))
+            y = int(input(f"Enter the colunm (from 0 to {size - 1}): \n"))
             print(f"You are shooting at {(x, y)}.")
             if (0 <= x < size) & (0 <= y < size):
                 who = True
@@ -256,6 +256,5 @@ populate_board(user_ships, ships_num)
 populate_board(comp_ships, ships_num)
 user_ships.show_board()
 computer_board.show_board()
-
-who = True
-user_shoot(who)
+WHO = True
+user_shoot(WHO)
