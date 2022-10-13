@@ -57,7 +57,7 @@ def game_intro():
 
 class Board():
     """
-    Creates game boards.
+    Creates, populates and shows game boards.
     """
     def __init__(self, names, sizes, ships_nums):
         self.name = names
@@ -73,26 +73,26 @@ class Board():
         for row in self.board:
             print(" ".join(row))
 
+    def populate_board(self):
+        """
+        Populates game boards with ships randomly.
+        """
+        ships_nums = self.ships_num
+        while ships_nums > 0:
+            x = random_dot(self.size)
+            y = random_dot(self.size)
+            if self.board[x][y] == '.':
+                self.board[x][y] = '&'
+                ships_nums -= 1
+            else:
+                pass
+
 
 def random_dot(sizes):
     """
     Gets random integers within board sizes.
     """
     return random.randint(0, sizes-1)
-
-
-def populate_board(player, ships_nums):
-    """
-    Populates game boards with ships randomly.
-    """
-    while ships_nums > 0:
-        x = random_dot(size)
-        y = random_dot(size)
-        if player.board[x][y] == '.':
-            player.board[x][y] = '&'
-            ships_nums -= 1
-        else:
-            pass
 
 
 def user_shoot(who):
@@ -234,8 +234,8 @@ def game_over():
     print("*       Thank you for playing our game!          *")
     print("*                                                *")
     print("*" * 50)
-    print("                    |>>")
-    print("                    |")
+    print("                    |>> ")
+    print("                    | ")
     print("              _____/|\_____")
     print("              \--<>---<>--/")
     print("      ~ ~ ~ ~ ~\~~~~~~~~~/~ ~ ~ ~ ~ ~")
@@ -252,8 +252,8 @@ print()
 user_ships = Board(name, size, ships_num)
 computer_board = Board('Computer', size, ships_num)
 comp_ships = Board('comp_ships', size, ships_num)
-populate_board(user_ships, ships_num)
-populate_board(comp_ships, ships_num)
+user_ships.populate_board()
+comp_ships.populate_board()
 user_ships.show_board()
 computer_board.show_board()
 WHO = True
