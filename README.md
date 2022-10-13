@@ -58,7 +58,7 @@ The winner is the player who sinks all of their opponent's ships first.
 
     - You cannot enter the same coordinates for a shot twice  
 
-          ![The coordinates input validation](https://github.com/Juniva616/game/blob/main/readme-files/md-already.png)     
+          ![The coordinates input validation](https://github.com/Juniva616/game/blob/main/readme-files/md-already.png?raw=true)     
 
 - Immediate Feedback 
     - Shows the player's input of the shot coordinates 
