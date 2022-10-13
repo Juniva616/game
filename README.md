@@ -6,7 +6,7 @@ The Sea Battle game is played on two ruled grids on which each player's fleet of
 
 The application provides a working the Sea Battle game for a single user to play against the computer.
 
- ![The game on different screen sizes](https://juniva616.github.io/game/readme-files/md-screens.png) 
+ ![The game on different screen sizes](https://github.com/Juniva616/game/blob/main/readme-files/md-screens.png)
 
 ## How to play
 
