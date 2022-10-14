@@ -136,9 +136,9 @@ Steps for deployment:
     - Link the Heroku App to the repository
     - Click on Deploy
 
-The URL on GitHub with my project is [here](https://github.com/Juniva616/game)
+The URL on GitHub with my project is https://github.com/Juniva616/game
 
-The live link to my project is (https://shoot-ships.herokuapp.com/)
+The live link to my project is https://shoot-ships.herokuapp.com/
 
 ## Credits
 - My Mentor for precious advice during making the project
